@@ -1,5 +1,5 @@
 from PIL import Image, ImageSequence
-import pytesseract
+import pytesseract, warnings, openpyxl
 from sys import argv
 from subprocess import check_call
 import warnings
@@ -27,6 +27,12 @@ else:
 
 img = Image.open(imagename)
 
+# store the image converted to string
+totalOutput = []
 for i, imgPage in enumerate(ImageSequence.Iterator(img)):
     print('Page <{}>'.format(i))
-    print(pytesseract.image_to_string(imgPage, lang="eng", config="hocr"))
+    totalOutput += pytesseract.image_to_string(imgPage, lang="eng", config="hocr")
+
+# parse the string for categories
+target = 'name'
+print(totalOutput[0].find(target))
