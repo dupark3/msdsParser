@@ -3,11 +3,12 @@
 venv/
 env/
 
-# PDFs, TIFFs, etc #
+# PDFs, TIFFs, XLSXs, etc #
 ################
 *.pdf
 *.tiff
 *.tif
+*.xlsx
 
 # Python cache #
 ################
